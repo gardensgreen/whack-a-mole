@@ -8,14 +8,15 @@
 //     }
 // }, 1000);
 
+const moleHeads = document.querySelectorAll(".wgs__mole-head");
+
 const popUpRandomMole = () => {
-    const moleHeads = document.querySelectorAll(".wgs__mole-head");
     let randomNum = Math.floor(Math.random() * 7);
     let mole = moleHeads[randomNum];
     mole.classList.remove("wgs__mole-head--hidden");
     setTimeout(() => {
         hideMole(mole);
-    }, 1000);
+    }, 3000);
 };
 
 const hideMole = (mole) => {
@@ -24,3 +25,9 @@ const hideMole = (mole) => {
 }
 
 setTimeout(popUpRandomMole, 0);
+
+moleHeads.forEach((moleHead) => {
+    moleHead.addEventListener("click", (e) => {
+        e.target.classList.add("wgs__mole-head--hidden");
+    })
+})
