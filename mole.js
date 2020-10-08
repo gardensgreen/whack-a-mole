@@ -11,8 +11,13 @@
 const moleHeads = document.querySelectorAll(".wgs__mole-head");
 
 const popUpRandomMole = () => {
-    let randomNum = Math.floor(Math.random() * 7);
-    let mole = moleHeads[randomNum];
+    const notMoleHeads = document.querySelectorAll(".wgs__mole-head:not(.wgs__mole-head--whacked");
+    if(notMoleHeads.length === 0){
+        alert("You Won!");
+        return;
+    }
+    let randomNum = Math.floor(Math.random() * notMoleHeads.length);
+    let mole = notMoleHeads[randomNum];
     mole.classList.remove("wgs__mole-head--hidden");
     setTimeout(() => {
         hideMole(mole);
@@ -29,5 +34,6 @@ setTimeout(popUpRandomMole, 0);
 moleHeads.forEach((moleHead) => {
     moleHead.addEventListener("click", (e) => {
         e.target.classList.add("wgs__mole-head--hidden");
+        e.target.classList.add("wgs__mole-head--whacked");
     })
 })
