@@ -14,6 +14,13 @@ const popUpRandomMole = () => {
     let mole = moleHeads[randomNum];
     mole.classList.remove("wgs__mole-head--hidden");
     setTimeout(() => {
-        hideMole();
+        hideMole(mole);
     }, 1000);
 };
+
+const hideMole = (mole) => {
+    mole.classList.add("wgs__mole-head--hidden");
+    setTimeout(popUpRandomMole, 1000);
+}
+
+setTimeout(popUpRandomMole, 0);
